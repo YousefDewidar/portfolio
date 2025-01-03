@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:my_portfolio/features/home/widgets/buttin_hire.dart';
 
 class HeroSection extends StatelessWidget {
@@ -8,95 +8,59 @@ class HeroSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 500,
-      padding: const EdgeInsets.all(16.0),
+      padding: const EdgeInsets.all(16),
       decoration: const BoxDecoration(
         color: Color.fromARGB(0, 255, 255, 255),
       ),
       child: Column(
         crossAxisAlignment: alginment,
         children: [
-          const Text(
+          Text(
             "Hello, I'm Yousef Dewidar",
             style: TextStyle(
-              fontSize: 24.0,
+              fontSize: 28.sp,
               fontWeight: FontWeight.bold,
               color: Colors.white70,
             ),
             textAlign: TextAlign.center,
           ),
-          const Text(
+          Text(
             "Mobile App Developer",
             style: TextStyle(
-              fontSize: 40.0,
+              fontSize: 46.sp,
               fontStyle: FontStyle.italic,
               color: Colors.blueAccent,
               fontWeight: FontWeight.bold,
             ),
-            textAlign: TextAlign.center,
+            textAlign: TextAlign.start,
           ),
-          const SizedBox(height: 16.0),
-          const Text(
-            "Welcome to my website",
+          SizedBox(height: 16.h),
+          Text(
+            "Welcome to my website 👋",
             style: TextStyle(
-              fontSize: 24.0,
-              color: Colors.white70,
+              fontSize: 26.sp,
+              color: const Color.fromARGB(203, 255, 255, 255),
             ),
             textAlign: TextAlign.center,
           ),
-          const SizedBox(height: 16.0),
-          const Row(
+          SizedBox(height: 16.h),
+          Row(
+            mainAxisAlignment: alginment == CrossAxisAlignment.start
+                ? MainAxisAlignment.start
+                : MainAxisAlignment.center,
             children: [
-              ButtonHire(
+              const ButtonHire(
                 title: "Hire Me",
               ),
-              SizedBox(width: 16.0),
-              ButtonHire(
+              SizedBox(width: 16.h),
+              const ButtonHire(
                 title: "View Works",
               ),
             ],
           ),
-          const SizedBox(height: 16.0),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              IconButton(
-                icon: const FaIcon(FontAwesomeIcons.facebook),
-                onPressed: () {
-                  // Open Facebook link
-                  launchUrl(
-                      'https://www.facebook.com/profile.php?id=100009483401222');
-                },
-              ),
-              IconButton(
-                icon: const FaIcon(FontAwesomeIcons.instagram),
-                onPressed: () {
-                  // Open Instagram link
-                  launchUrl('https://www.instagram.com/yousef_dewidar/');
-                },
-              ),
-              IconButton(
-                icon: const FaIcon(FontAwesomeIcons.twitter),
-                onPressed: () {
-                  // Open Twitter link
-                  launchUrl('#');
-                },
-              ),
-              IconButton(
-                icon: const FaIcon(FontAwesomeIcons.linkedin),
-                onPressed: () {
-                  // Open LinkedIn link
-                  launchUrl('#');
-                },
-              ),
-            ],
-          ),
+          SizedBox(height: 16.h),
         ],
       ),
     );
-  }
-
-  void launchUrl(String url) {
-    // Add logic to open URL in a browser
   }
 }

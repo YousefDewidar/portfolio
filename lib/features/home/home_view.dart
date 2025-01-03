@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:my_portfolio/features/home/widgets/custom_appbar.dart';
 import 'package:my_portfolio/features/home/widgets/hero_section.dart';
 
@@ -19,42 +20,51 @@ class HomeView extends StatelessWidget {
             ),
           ),
           child: Padding(
-            padding:
-                const EdgeInsets.symmetric(vertical: 20.0, horizontal: 100),
-            child: LayoutBuilder(builder: (context, constraints) {
-              if (constraints.maxWidth < 500) {
-                // Small Screen
-                return Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    const CustomAppbarForMobile(),
-                    const SizedBox(height: 25),
-                    Image.asset("assets/me.png", scale: 1.2),
-                    const HeroSection(alginment: CrossAxisAlignment.center),
-                  ],
-                );
-              } else {
-                // Big Screen
-                return Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    const CustomAppBar(),
-                    const SizedBox(height: 100),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        const HeroSection(),
-                        Image.asset("assets/me.png", scale: 1.2),
-                      ],
-                    ),
-                  ],
-                );
-              }
-            }),
+            padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 100.w),
+            child: LayoutBuilder(
+              builder: (context, constraints) {
+                if (constraints.maxWidth < 500) {
+                  // Small Screen
+                  return Stack(
+                    children: [
+                      Column(
+                        children: [
+                          SizedBox(height: 25.h),
+                          Image.asset("assets/me.png", height: 300),
+                          const HeroSection(
+                              alginment: CrossAxisAlignment.center),
+                        ],
+                      ),
+                      const CustomAppBar(forMobile: true),
+                    ],
+                  );
+                } else {
+                  // Big Screen
+                  return Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      CustomAppBar(forMobile: constraints.maxWidth < 800),
+                      SizedBox(height: 100.h),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          const HeroSection(),
+                          Flexible(
+                            child: Image.asset(
+                              "assets/me.png",
+                              height: 500.h,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  );
+                }
+              },
+            ),
           ),
         ),
       ),
     );
   }
 }
-

@@ -1,7 +1,6 @@
-
 import 'package:flutter/material.dart';
 
-class ButtonHire extends StatelessWidget {
+class ButtonHire extends StatefulWidget {
   const ButtonHire({
     super.key,
     required this.title,
@@ -9,11 +8,23 @@ class ButtonHire extends StatelessWidget {
   final String title;
 
   @override
+  State<ButtonHire> createState() => _ButtonHireState();
+}
+
+class _ButtonHireState extends State<ButtonHire> {
+  bool _isHover = false;
+  @override
   Widget build(BuildContext context) {
     return ElevatedButton(
+      onHover: (value) {
+        _isHover = value;
+        setState(() {});
+      },
       onPressed: () {},
       style: ButtonStyle(
-        backgroundColor: const WidgetStatePropertyAll(Colors.blueGrey),
+        backgroundColor: WidgetStatePropertyAll(_isHover
+            ? const Color.fromARGB(255, 75, 97, 108)
+            : Colors.blueGrey),
         foregroundColor: const WidgetStatePropertyAll(Colors.white),
         shape: WidgetStatePropertyAll(
           ContinuousRectangleBorder(
@@ -21,7 +32,7 @@ class ButtonHire extends StatelessWidget {
           ),
         ),
       ),
-      child: Text(title),
+      child: Text(widget.title),
     );
   }
 }
