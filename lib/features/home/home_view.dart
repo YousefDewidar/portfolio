@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:my_portfolio/features/home/widgets/custom_appbar.dart';
+import 'package:my_portfolio/features/home/widgets/github_stats.dart';
 import 'package:my_portfolio/features/home/widgets/hero_section.dart';
 import 'package:my_portfolio/features/home/widgets/projects_list_view.dart';
 import 'package:my_portfolio/features/home/widgets/title_card.dart';
@@ -70,6 +71,7 @@ class HomeView extends StatelessWidget {
                     desc: "Check out my projects below 👇",
                   ),
                   const ProjectsListView(),
+                  const GitHubStats(),
                 ],
               );
             }
@@ -79,4 +81,3 @@ class HomeView extends StatelessWidget {
     );
   }
 }
-
