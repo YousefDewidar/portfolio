@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:my_portfolio/features/home/widgets/custom_appbar.dart';
-import 'package:my_portfolio/features/home/widgets/hero_section.dart';
-import 'package:my_portfolio/features/home/widgets/projects_list_view.dart';
 import 'package:my_portfolio/features/home/widgets/title_card.dart';
 
-class HomeView extends StatelessWidget {
-  const HomeView({super.key});
+class ProjectsView extends StatelessWidget {
+  const ProjectsView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -29,15 +27,10 @@ class HomeView extends StatelessWidget {
                 children: [
                   ListView(
                     padding: EdgeInsets.symmetric(horizontal: 100.w),
-                    children: [
-                      SizedBox(height: 50.h),
-                      Image.asset("assets/me.png", height: 300),
-                      const HeroSection(alginment: CrossAxisAlignment.center),
-                      SizedBox(height: 25.h),
-                      const TitleCard(
+                    children: const [
+                      TitleCard(
                           title: "Projects",
                           desc: "Check out my projects below 👇"),
-                      const ProjectsListView()
                     ],
                   ),
                   const Positioned(
@@ -54,22 +47,29 @@ class HomeView extends StatelessWidget {
                 children: [
                   SizedBox(height: 20.h),
                   CustomAppBar(forMobile: constraints.maxWidth < 800),
-                  SizedBox(height: 100.h),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      const HeroSection(),
-                      Flexible(
-                        child: Image.asset("assets/me.png", height: 500.h),
-                      ),
-                    ],
-                  ),
-                  SizedBox(height: 150.h),
+                  SizedBox(height: 20.h),
                   const TitleCard(
                     title: "Projects",
                     desc: "Check out my projects below 👇",
                   ),
-                  const ProjectsListView(),
+                  GridView.builder(
+                    shrinkWrap: true,
+                    physics: const NeverScrollableScrollPhysics(),
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 3,
+                      // childAspectRatio: 2/1.2
+                    ),
+                    itemCount: 9,
+                    itemBuilder: (context, index) {
+                      return Container(
+                        margin: const EdgeInsets.all(10),
+                        height: 200,
+                        width: 200,
+                        color: Colors.white,
+                      );
+                    },
+                  )
                 ],
               );
             }
@@ -79,4 +79,3 @@ class HomeView extends StatelessWidget {
     );
   }
 }
-

@@ -127,11 +127,13 @@ class LinksCard extends StatelessWidget {
             : Colors.transparent,
       ),
       child: Center(
-        child: Text(title,
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 17.sp,
-            )),
+        child: Text(
+          title,
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: MediaQuery.of(context).size.width < 500 ? 12 : 15,
+          ),
+        ),
       ),
     );
   }
