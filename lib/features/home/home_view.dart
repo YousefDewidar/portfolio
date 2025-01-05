@@ -32,7 +32,7 @@ class HomeView extends StatelessWidget {
                     padding: EdgeInsets.symmetric(horizontal: 100.w),
                     children: [
                       SizedBox(height: 50.h),
-                      Image.asset("assets/me.png", height: 300),
+                      Image.asset("assets/megamenu.png", height: 300),
                       const HeroSection(alginment: CrossAxisAlignment.center),
                       SizedBox(height: 25.h),
                       const TitleCard(
@@ -61,7 +61,7 @@ class HomeView extends StatelessWidget {
                     children: [
                       const HeroSection(),
                       Flexible(
-                        child: Image.asset("assets/me.png", height: 500.h),
+                        child: Image.asset("assets/megamenu.png", height: 500.h),
                       ),
                     ],
                   ),

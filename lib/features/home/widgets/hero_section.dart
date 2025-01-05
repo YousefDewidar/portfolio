@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:my_portfolio/features/home/widgets/buttin_hire.dart';
+import 'package:widget_and_text_animator/widget_and_text_animator.dart';
 
 class HeroSection extends StatelessWidget {
   const HeroSection({super.key, this.alginment = CrossAxisAlignment.start});
@@ -16,7 +17,7 @@ class HeroSection extends StatelessWidget {
         crossAxisAlignment: alginment,
         children: [
           Text(
-            "Hello, I'm Yousef Dewidar",
+            "I'm Yousef Dewidar",
             style: TextStyle(
               fontSize: 28.sp,
               fontWeight: FontWeight.bold,
@@ -24,15 +25,26 @@ class HeroSection extends StatelessWidget {
             ),
             textAlign: TextAlign.center,
           ),
-          Text(
-            "Mobile App Developer",
-            style: TextStyle(
-              fontSize: 46.sp,
-              fontStyle: FontStyle.italic,
-              color: Colors.blueAccent,
-              fontWeight: FontWeight.bold,
+          ShaderMask(
+            shaderCallback: (bounds) {
+              return const LinearGradient(
+                colors: [Colors.blue, Colors.red],
+                stops: [0.3, 0.7],
+              ).createShader(bounds);
+            },
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 3.0),
+              child: TextAnimator(
+                "Mobile App Developer",
+                style: TextStyle(
+                  fontSize: 46.sp,
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                ),
+                textAlign: TextAlign.start,
+                atRestEffect: WidgetRestingEffects.wave(),
+              ),
             ),
-            textAlign: TextAlign.start,
           ),
           SizedBox(height: 16.h),
           Text(

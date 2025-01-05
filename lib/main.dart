@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:my_portfolio/features/home/home_view.dart';
 
-/* 
+/*
 TODO: 1. Create a new project in your Supabase.
 TODO: 2. Edit responsive in home
 TODO: 3. Split images

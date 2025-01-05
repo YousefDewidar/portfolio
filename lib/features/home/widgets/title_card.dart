@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:widget_and_text_animator/widget_and_text_animator.dart';
 
 class TitleCard extends StatelessWidget {
   const TitleCard({
@@ -13,7 +14,8 @@ class TitleCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Text(
+        TextAnimator(
+          incomingEffect: WidgetTransitionEffects.incomingScaleDown(),
           title,
           style: TextStyle(
             fontSize: 30.sp,
