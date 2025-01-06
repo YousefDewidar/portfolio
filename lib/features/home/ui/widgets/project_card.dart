@@ -1,26 +1,13 @@
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
-class ProjectsListView extends StatelessWidget {
-  const ProjectsListView({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        for (var i = 0; i < 3; i++) const ProjectCard(),
-      ],
-    );
-  }
-}
 
 class ProjectCard extends StatelessWidget {
   const ProjectCard({
     super.key,
+    required this.project,
   });
+  final Map project;
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +24,7 @@ class ProjectCard extends StatelessWidget {
             ),
             child: SizedBox(
               width: double.infinity,
-              child: Image.asset("assets/almuslm.jpg", fit: BoxFit.cover),
+              child: Image.network(project['img'], fit: BoxFit.cover),
             ),
           ),
           Expanded(
@@ -57,7 +44,7 @@ class ProjectCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    "Project Title",
+                    project['name'],
                     style: TextStyle(
                       fontSize: 20.sp,
                       fontWeight: FontWeight.bold,
@@ -65,7 +52,9 @@ class ProjectCard extends StatelessWidget {
                   ),
                   SizedBox(height: 10.h),
                   Text(
-                    "Project Description",
+                    project['desc'],
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
                     style: TextStyle(
                       fontSize: 15.sp,
                     ),

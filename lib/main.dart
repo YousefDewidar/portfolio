@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:my_portfolio/features/home/home_view.dart';
+import 'package:my_portfolio/features/home/ui/home_view.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 /*
-TODO: 1. Create a new project in your Supabase.
 TODO: 2. Edit responsive in home
 TODO: 3. Split images
 TODO: 4. Create about me, contact me , skills , projects, services and resume pages
@@ -11,12 +11,20 @@ TODO: 5. Add a view for projects and contact me
 TODO: 6. Create a Chatbot for the website
 */
 
-void main() {
-  runApp(const MyApp());
+void main() async {
+
+
+  await Supabase.initialize(
+    url: 'https://lbnrwforqubaouajsbhi.supabase.co',
+    anonKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxibnJ3Zm9ycXViYW91YWpzYmhpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzYxMjA1MjEsImV4cCI6MjA1MTY5NjUyMX0._ieVI1Mc-k_m3EoI-8dP5y2uf4eLgUqo6g0fsm2g_j8',
+  );
+
+        
+  runApp(const MyPortfolio());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class MyPortfolio extends StatelessWidget {
+  const MyPortfolio({super.key});
 
   @override
   Widget build(BuildContext context) {

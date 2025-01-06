@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:my_portfolio/features/home/widgets/custom_appbar.dart';
-import 'package:my_portfolio/features/home/widgets/title_card.dart';
+import 'package:my_portfolio/features/home/ui/widgets/custom_appbar.dart';
+import 'package:my_portfolio/features/home/ui/widgets/title_card.dart';
 
 class ProjectsView extends StatelessWidget {
   const ProjectsView({super.key});

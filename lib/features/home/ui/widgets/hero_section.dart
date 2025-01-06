@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:my_portfolio/features/home/widgets/buttin_hire.dart';
+import 'package:my_portfolio/features/home/ui/widgets/buttin_hire.dart';
 import 'package:widget_and_text_animator/widget_and_text_animator.dart';
 
 class HeroSection extends StatelessWidget {
