@@ -10,7 +10,7 @@ class ProjectsListView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
-        future: SupabaseService.getData('projects'),
+        future: SupabaseService.getAllProjects('projects'),
         builder: (context, snapshot) {
           if (snapshot.hasData) {
             return SizedBox(
