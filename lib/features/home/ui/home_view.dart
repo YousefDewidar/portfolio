@@ -47,7 +47,7 @@ class HomeView extends StatelessWidget {
                       top: 20,
                       left: 0,
                       right: 0,
-                      child: CustomAppBar(forMobile: true)),
+                      child: CustomAppBar(forMobile: true, activeNum: 0)),
                 ],
               );
             } else {
@@ -56,14 +56,18 @@ class HomeView extends StatelessWidget {
                 padding: EdgeInsets.symmetric(horizontal: 100.w),
                 children: [
                   SizedBox(height: 20.h),
-                  CustomAppBar(forMobile: constraints.maxWidth < 800),
+                  CustomAppBar(
+                    forMobile: constraints.maxWidth < 800,
+                    activeNum: 0,
+                  ),
                   SizedBox(height: 100.h),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
                       const HeroSection(),
                       Flexible(
-                        child: Image.asset("assets/megamenu.png", height: 500.h),
+                        child:
+                            Image.asset("assets/megamenu.png", height: 500.h),
                       ),
                     ],
                   ),

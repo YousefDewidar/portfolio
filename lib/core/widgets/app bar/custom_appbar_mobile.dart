@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:my_portfolio/core/helper/fast_navigate.dart';
 import 'package:my_portfolio/core/widgets/app%20bar/link_card.dart';
+import 'package:my_portfolio/features/home/ui/home_view.dart';
+import 'package:my_portfolio/features/projects/projects_view.dart';
 
 class CustomAppbarForMobile extends StatefulWidget {
-  const CustomAppbarForMobile({super.key});
+  const CustomAppbarForMobile({super.key, required this.activeNum});
+  final int activeNum;
 
   @override
   State<CustomAppbarForMobile> createState() => _CustomAppbarForMobileState();
@@ -26,15 +30,39 @@ class _CustomAppbarForMobileState extends State<CustomAppbarForMobile> {
           },
         ),
         if (_isExpanded)
-          const Column(
+          Column(
             children: [
-              LinksCard(title: 'Home'),
-              SizedBox(height: 3),
-              LinksCard(title: 'About'),
-              SizedBox(height: 3),
-              LinksCard(title: 'Projects'),
-              SizedBox(height: 3),
-              LinksCard(title: 'Contact'),
+              LinksCard(
+                title: 'Home',
+                active: widget.activeNum == 0,
+                onTap: () {
+                  fastNavigate(context, const HomeView());
+                },
+              ),
+              const SizedBox(height: 3),
+              LinksCard(
+                title: 'About',
+                active: widget.activeNum == 1,
+                onTap: () {
+                  // fastNavigate(context, const HomeView());
+                },
+              ),
+              const SizedBox(height: 3),
+              LinksCard(
+                title: 'Projects',
+                active: widget.activeNum == 2,
+                onTap: () {
+                  fastNavigate(context, const ProjectsView());
+                },
+              ),
+              const SizedBox(height: 3),
+              LinksCard(
+                title: 'Contact',
+                active: widget.activeNum == 3,
+                onTap: () {
+                  // fastNavigate(context, const HomeView());
+                },
+              ),
             ],
           ),
       ],

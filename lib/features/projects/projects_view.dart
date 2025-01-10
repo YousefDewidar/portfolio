@@ -29,8 +29,7 @@ class ProjectsView extends StatelessWidget {
             padding: EdgeInsets.symmetric(horizontal: 100.w),
             children: [
               SizedBox(height: 20.h),
-              CustomAppBar(
-                forMobile: constraints.maxWidth < 800),
+              CustomAppBar(activeNum: 2, forMobile: constraints.maxWidth < 800),
               SizedBox(height: 20.h),
               const TitleCard(
                 title: "Projects",

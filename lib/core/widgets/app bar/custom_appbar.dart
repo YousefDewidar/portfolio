@@ -7,8 +7,10 @@ class CustomAppBar extends StatelessWidget {
   const CustomAppBar({
     super.key,
     this.forMobile = false,
+    required this.activeNum,
   });
   final bool forMobile;
+  final int activeNum;
   @override
   Widget build(BuildContext context) {
     return Align(
@@ -38,9 +40,13 @@ class CustomAppBar extends StatelessWidget {
             children: [
               Image.asset('assets/logo.png', height: 35),
               if (forMobile)
-                const CustomAppbarForMobile()
+                CustomAppbarForMobile(
+                  activeNum: activeNum,
+                )
               else
-                const LinksForWeb(),
+                LinksForWeb(
+                  activeNum: activeNum,
+                ),
             ],
           ),
         ),
@@ -48,5 +54,3 @@ class CustomAppBar extends StatelessWidget {
     );
   }
 }
-
-

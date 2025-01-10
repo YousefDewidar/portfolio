@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:my_portfolio/features/home/ui/home_view.dart';
-import 'package:my_portfolio/features/projects/projects_view.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 /*
@@ -32,7 +31,7 @@ class MyPortfolio extends StatelessWidget {
       child: MaterialApp(
         title: 'YMD',
         debugShowCheckedModeBanner: false,
-        home: ProjectsView(),
+        home: HomeView(),
       ),
     );
   }
