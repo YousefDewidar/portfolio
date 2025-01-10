@@ -1,4 +1,3 @@
-import 'dart:developer';
 
 import 'package:my_portfolio/features/home/data/models/links.dart';
 
@@ -23,11 +22,10 @@ class Project {
   });
 
   factory Project.fromJson(Map<String, dynamic> data) {
-    log(data.toString());
     return Project(
       id: data['id'] as int,
       name: data['name'] as String,
-      desc: data['desc'] as String,
+      desc: data['descrption'] as String,
       state: data['state'] as String,
       date: data['date'] as String,
       img: data['img'] as String,

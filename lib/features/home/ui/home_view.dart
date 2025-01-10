@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:my_portfolio/features/home/ui/widgets/custom_appbar.dart';
+import 'package:my_portfolio/core/widgets/app%20bar/custom_appbar.dart';
+import 'package:my_portfolio/features/home/ui/widgets/customer_services.dart';
 import 'package:my_portfolio/features/home/ui/widgets/github_stats.dart';
 import 'package:my_portfolio/features/home/ui/widgets/hero_section.dart';
 import 'package:my_portfolio/features/home/ui/widgets/projects_list_view.dart';
@@ -12,6 +13,7 @@ class HomeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: const CustomerService(),
       body: Container(
         height: MediaQuery.of(context).size.height,
         width: double.infinity,

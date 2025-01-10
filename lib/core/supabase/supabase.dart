@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:my_portfolio/features/home/data/models/project.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
@@ -9,9 +7,13 @@ class SupabaseService {
   static Future<List<Project>> getAllProjects(String table) async {
     var dbData = supabase.from(table).select();
     var data = await dbData;
-    var ss = data.map((item) => Project.fromJson(item)).toList();
 
-    log(ss.toString());
+    return data.map((item) => Project.fromJson(item)).toList();
+  }
+
+  static Future<List<Project>> getTopProjects() async {
+    var dbData = supabase.from('projects').select().limit(6);
+    var data = await dbData;
     return data.map((item) => Project.fromJson(item)).toList();
   }
 }
