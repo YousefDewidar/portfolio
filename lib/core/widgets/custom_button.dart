@@ -2,9 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CustomButton extends StatefulWidget {
-  const CustomButton({super.key, required this.title, required this.onTap});
+  const CustomButton({
+    super.key,
+    required this.title,
+    required this.onTap,
+    this.width = 300,
+    this.colors = const [Color(0xFFF44336), Color(0xFF2196F3)],
+  });
   final String title;
   final void Function() onTap;
+  final double width;
+  final List<Color> colors;
   @override
   State<CustomButton> createState() => _CustomButtonState();
 }
@@ -20,14 +28,13 @@ class _CustomButtonState extends State<CustomButton> {
         setState(() {});
       },
       child: AnimatedContainer(
-        width: 300.w,
+        width: widget.width.w,
         height: 40.w,
         duration: const Duration(milliseconds: 600),
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(15),
+          borderRadius: BorderRadius.circular(12),
           gradient: LinearGradient(
-            colors:
-                _hoverd ? [Colors.red, Colors.blue] : [Colors.blue, Colors.red],
+            colors: _hoverd ? widget.colors : widget.colors.reversed.toList(),
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
           ),

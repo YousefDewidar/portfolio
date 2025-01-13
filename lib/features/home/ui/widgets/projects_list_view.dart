@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:my_portfolio/core/widgets/custom_button.dart';
 import 'package:my_portfolio/dummy_projects.dart';
 import 'package:my_portfolio/features/home/ui/widgets/project_card.dart';
+import 'package:my_portfolio/features/home/ui/widgets/title_card.dart';
 import 'package:my_portfolio/features/projects/projects_view.dart';
 
 class ProjectsListView extends StatelessWidget {
@@ -13,6 +14,10 @@ class ProjectsListView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
+        const TitleCard(
+          title: "Projects",
+          desc: "Check out my projects below 👇",
+        ),
         FutureBuilder(
           // future: SupabaseService.getTopProjects(),
           future: getDummyProjectAsync(),
