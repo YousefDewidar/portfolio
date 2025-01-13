@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:my_portfolio/features/home/ui/home_view.dart';
-import 'package:supabase_flutter/supabase_flutter.dart';
 
 /*
 TODO: 3. Split images
-TODO: 4. Create about me, contact me , skills , projects, services and resume pages
+TODO: 4. contact me ,services 
 TODO: 5. Add a view for projects and contact me
 
 */

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:my_portfolio/dummy_projects.dart';
 import 'package:my_portfolio/core/widgets/app%20bar/custom_appbar.dart';
-import 'package:my_portfolio/features/home/ui/widgets/customer_services.dart';
+import 'package:my_portfolio/features/home/ui/widgets/customerService/customer_services.dart';
 import 'package:my_portfolio/features/home/ui/widgets/project_card.dart';
 import 'package:my_portfolio/features/home/ui/widgets/title_card.dart';
 

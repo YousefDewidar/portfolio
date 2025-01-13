@@ -59,14 +59,14 @@ class AboutMe extends StatelessWidget {
                           "Major in Computer Engineering and Automatic control.",
                           style: TextStyle(
                             fontSize: 15,
-                            color: Color.fromARGB(232, 255, 255, 255),
+                            color: Color.fromARGB(211, 255, 255, 255),
                           ),
                         ),
                         Text(
                           "Expected graduation: 2026",
                           style: TextStyle(
                             fontSize: 15,
-                            color: Color.fromARGB(232, 255, 255, 255),
+                            color: Color.fromARGB(211, 255, 255, 255),
                           ),
                         ),
                       ],
