@@ -1,33 +1,36 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_expanded_tile/flutter_expanded_tile.dart';
 
 class ServiceCard extends StatelessWidget {
   const ServiceCard({
     super.key,
-    required this.onTap,
     required this.title,
+    required this.content,
   });
-  final void Function() onTap;
   final String title;
+  final String content;
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      onTap: onTap,
-      child: Card(
-        borderOnForeground: false,
-        shadowColor: const Color.fromARGB(219, 108, 108, 108),
-        color: Colors.white,
-        elevation: 3,
-        shape: const ContinuousRectangleBorder(
-            borderRadius: BorderRadius.all(Radius.circular(12))),
-        child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 8),
-          child: Text(
-            title,
-            style: const TextStyle(
-              color: Colors.black,
-            ),
-          ),
+    ExpandedTileController tileController = ExpandedTileController();
+    return ExpandedTile(
+      footerSeparator: 0,
+      theme: const ExpandedTileThemeData(
+        headerColor: Color.fromARGB(230, 238, 238, 238),
+        contentBackgroundColor: Color.fromARGB(230, 197, 197, 197),
+      ),
+      contentseparator: 0,
+      controller: tileController,
+      title: Text(
+        title,
+        style: const TextStyle(
+          color: Colors.black,
+        ),
+      ),
+      content: Text(
+        content,
+        style: const TextStyle(
+          color: Colors.black,
         ),
       ),
     );
