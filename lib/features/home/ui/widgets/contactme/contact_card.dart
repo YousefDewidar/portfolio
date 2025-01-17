@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 
 class ContactCard extends StatefulWidget {
   const ContactCard({
     super.key,
-    required this.icon,
+    required this.img,
     required this.title,
+    required this.onTap,
   });
-  final IconData icon;
+  final String img;
   final String title;
+  final void Function() onTap;
 
   @override
   State<ContactCard> createState() => _ContactCardState();
@@ -23,17 +24,7 @@ class _ContactCardState extends State<ContactCard> {
         hovered = value;
         setState(() {});
       },
-      onTap: () {
-        Clipboard.setData(ClipboardData(text: widget.title));
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            backgroundColor: const Color.fromARGB(216, 42, 23, 62),
-            content:
-                Center(child: Text("Copied to clipboard: ${widget.title}")),
-            duration: const Duration(seconds: 2),
-          ),
-        );
-      },
+      onTap: widget.onTap,
       child: Container(
         padding: const EdgeInsets.all(10),
         decoration: BoxDecoration(
@@ -43,7 +34,7 @@ class _ContactCardState extends State<ContactCard> {
             borderRadius: BorderRadius.circular(8)),
         child: Row(
           children: [
-            Icon(widget.icon, color: Colors.white),
+            Image.asset(widget.img, width: 50, height: 30),
             const SizedBox(width: 10),
             Text(widget.title, style: const TextStyle(color: Colors.white)),
           ],

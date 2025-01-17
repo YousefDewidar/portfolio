@@ -4,8 +4,8 @@ import 'package:my_portfolio/features/home/ui/home_view.dart';
 
 /*
 TODO: 3. Split images
-TODO: 4. contact me ,services 
-TODO: 5. Add a view for projects and contact me
+TODO: 4.services 
+TODO: 5. Add a view for projects 
 
 */
 
