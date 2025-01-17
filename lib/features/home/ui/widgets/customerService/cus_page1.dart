@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:my_portfolio/core/widgets/custom_button.dart';
 import 'package:my_portfolio/features/home/ui/widgets/customerService/service_card.dart';
 
 class CusPage1 extends StatelessWidget {
   const CusPage1({
     super.key,
+    required this.con,
   });
+  final PageController con;
 
   @override
   Widget build(BuildContext context) {
@@ -53,15 +56,22 @@ class CusPage1 extends StatelessWidget {
           ),
           const SizedBox(height: 10),
           Expanded(
-              child: ListView.builder(
-            itemCount: servicesList.length,
-            itemBuilder: (context, index) {
-              return Padding(
-                padding: const EdgeInsets.only(bottom: 8.0),
-                child: servicesList[index],
-              );
-            },
-          )),
+            child: ListView.builder(
+              itemCount: servicesList.length,
+              itemBuilder: (context, index) {
+                return Padding(
+                  padding: const EdgeInsets.only(bottom: 8.0),
+                  child: servicesList[index],
+                );
+              },
+            ),
+          ),
+          CustomButton(
+              title: "Back To Home",
+              height: 30,
+              onTap: () {
+                con.jumpToPage(0);
+              }),
         ],
       ),
     );

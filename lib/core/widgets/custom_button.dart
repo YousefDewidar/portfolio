@@ -7,12 +7,14 @@ class CustomButton extends StatefulWidget {
     required this.title,
     required this.onTap,
     this.width = 300,
+    this.height = 40,
     this.colors = const [Color(0xFFF44336), Color(0xFF2196F3)],
   });
   final String title;
   final void Function() onTap;
-  final double width;
   final List<Color> colors;
+  final double width;
+  final double height;
   @override
   State<CustomButton> createState() => _CustomButtonState();
 }
@@ -29,7 +31,7 @@ class _CustomButtonState extends State<CustomButton> {
       },
       child: AnimatedContainer(
         width: widget.width.w,
-        height: 40.w,
+        height: widget.height,
         duration: const Duration(milliseconds: 600),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(12),
@@ -42,9 +44,9 @@ class _CustomButtonState extends State<CustomButton> {
         child: Center(
           child: Text(
             widget.title.toUpperCase(),
-            style: TextStyle(
-              fontSize: 15.sp,
-              color: const Color.fromARGB(217, 255, 255, 255),
+            style: const TextStyle(
+              fontSize: 15,
+              color: Color.fromARGB(243, 255, 255, 255),
             ),
           ),
         ),

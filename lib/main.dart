@@ -12,9 +12,8 @@ TODO: 5. Add a view for projects and contact me
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   // await Supabase.initialize(
-  //   url: 'https://lbnrwforqubaouajsbhi.supabase.co',
-  //   anonKey:
-  //       'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxibnJ3Zm9ycXViYW91YWpzYmhpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzYxMjA1MjEsImV4cCI6MjA1MTY5NjUyMX0._ieVI1Mc-k_m3EoI-8dP5y2uf4eLgUqo6g0fsm2g_j8',
+  //   url: supabaseUrl,
+  //   anonKey: supabaseKey,
   // );
 
   runApp(const MyPortfolio());

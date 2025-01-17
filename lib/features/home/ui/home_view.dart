@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:my_portfolio/core/widgets/app%20bar/custom_appbar.dart';
 import 'package:my_portfolio/features/home/ui/about_me.dart';
+import 'package:my_portfolio/features/home/ui/widgets/contactme/contact_me.dart';
 import 'package:my_portfolio/features/home/ui/widgets/customerService/customer_services.dart';
 import 'package:my_portfolio/features/home/ui/widgets/github_stats.dart';
 import 'package:my_portfolio/features/home/ui/widgets/hero_section.dart';
@@ -78,6 +80,7 @@ class HomeView extends StatelessWidget {
                     desc: "",
                   ),
                   const AboutMe(),
+                  const ContactMe(),
                   SizedBox(height: 50.h),
                   const ProjectsListView(),
                   const GitHubStats(),
@@ -90,3 +93,4 @@ class HomeView extends StatelessWidget {
     );
   }
 }
+

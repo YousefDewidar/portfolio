@@ -25,10 +25,7 @@ class CustomerSerChat extends StatelessWidget {
               controller: controller,
               scrollDirection: Axis.horizontal,
               physics: const NeverScrollableScrollPhysics(),
-              children: [
-                CusPage0(con: controller),
-                const CusPage1()
-              ],
+              children: [CusPage0(con: controller), CusPage1(con: controller)],
             ),
           ),
         ],
@@ -36,4 +33,3 @@ class CustomerSerChat extends StatelessWidget {
     );
   }
 }
-
