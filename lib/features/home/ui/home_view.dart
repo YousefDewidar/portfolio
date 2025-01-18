@@ -1,18 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:my_portfolio/core/widgets/app%20bar/custom_appbar.dart';
-import 'package:my_portfolio/features/home/ui/about_me.dart';
-import 'package:my_portfolio/features/home/ui/widgets/contactme/contact_me.dart';
+import 'package:my_portfolio/core/supabase/supabase.dart';
 import 'package:my_portfolio/features/home/ui/widgets/customerService/customer_services.dart';
-import 'package:my_portfolio/features/home/ui/widgets/github_stats.dart';
-import 'package:my_portfolio/features/home/ui/widgets/hero_section.dart';
-import 'package:my_portfolio/features/home/ui/widgets/projects_list_view.dart';
-import 'package:my_portfolio/features/home/ui/widgets/title_card.dart';
+import 'package:my_portfolio/features/home/ui/widgets/home_view_body.dart';
 
-class HomeView extends StatelessWidget {
+class HomeView extends StatefulWidget {
   const HomeView({super.key});
 
+  @override
+  State<HomeView> createState() => _HomeViewState();
+}
+
+class _HomeViewState extends State<HomeView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,65 +25,13 @@ class HomeView extends StatelessWidget {
             end: Alignment.bottomRight,
           ),
         ),
-        child: LayoutBuilder(
-          builder: (context, constraints) {
-            if (constraints.maxWidth < 500) {
-              // Small Screen
-              return Stack(
-                children: [
-                  ListView(
-                    padding: EdgeInsets.symmetric(horizontal: 100.w),
-                    children: [
-                      SizedBox(height: 50.h),
-                      Image.asset("assets/megamenu.png", height: 300),
-                      const HeroSection(alginment: CrossAxisAlignment.center),
-                      SizedBox(height: 25.h),
-                      const TitleCard(
-                          title: "Projects",
-                          desc: "Check out my projects below 👇"),
-                      const ProjectsListView()
-                    ],
-                  ),
-                  const Positioned(
-                      top: 20,
-                      left: 0,
-                      right: 0,
-                      child: CustomAppBar(forMobile: true, activeNum: 0)),
-                ],
-              );
+        child: FutureBuilder(
+          future: SupabaseService.getMyinfo(),
+          builder: (context, snapshot) {
+            if (snapshot.hasData) {
+              return HomeViewBody(myInfo: snapshot.data!);
             } else {
-              // Big Screen
-              return ListView(
-                padding: EdgeInsets.symmetric(horizontal: 100.w),
-                children: [
-                  SizedBox(height: 20.h),
-                  CustomAppBar(
-                    forMobile: constraints.maxWidth < 800,
-                    activeNum: 0,
-                  ),
-                  SizedBox(height: 100.h),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      const HeroSection(),
-                      Flexible(
-                        child:
-                            Image.asset("assets/megamenu.png", height: 500.h),
-                      ),
-                    ],
-                  ),
-                  SizedBox(height: 150.h),
-                  const TitleCard(
-                    title: "About Me",
-                    desc: "",
-                  ),
-                  const AboutMe(),
-                  const ContactMe(),
-                  SizedBox(height: 50.h),
-                  const ProjectsListView(),
-                  const GitHubStats(),
-                ],
-              );
+              return const Center(child: CircularProgressIndicator());
             }
           },
         ),
@@ -93,4 +39,3 @@ class HomeView extends StatelessWidget {
     );
   }
 }
-

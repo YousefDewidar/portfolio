@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:my_portfolio/core/widgets/custom_button.dart';
+import 'package:my_portfolio/features/contact/data/me.dart';
 import 'package:my_portfolio/features/home/ui/widgets/aboutme/my_image.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class AboutMe extends StatelessWidget {
-  const AboutMe({super.key});
+  const AboutMe({super.key, required this.myinfo});
+  final Me myinfo;
 
   @override
   Widget build(BuildContext context) {
@@ -18,18 +21,18 @@ class AboutMe extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text(
-                "YOUSEF MAHMOUD DEWIDAR",
-                style: TextStyle(
+              Text(
+                myinfo.name.toUpperCase(),
+                style: const TextStyle(
                   fontSize: 30,
                   color: Colors.red,
                   fontWeight: FontWeight.bold,
                 ),
               ),
               const SizedBox(height: 8),
-              const Text(
-                "I am a Computer Engineer with over a year of experience in mobile application development using Flutter. I have a strong understanding of the Flutter framework and Dart programming language. Passionate about creating innovative, user-friendly applications, I strive to develop efficient and scalable solutions that enhance user experience.",
-                style: TextStyle(
+              Text(
+                myinfo.about,
+                style: const TextStyle(
                   fontSize: 15,
                   color: Color.fromARGB(232, 255, 255, 255),
                 ),
@@ -84,19 +87,15 @@ class AboutMe extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 20),
-              Image.network(
-                "https://skillicons.dev/icons?i=flutter,dart,firebase,postman,python,kotlin,supabase,github,git,androidstudio,vscode,figma",
-              ),
+              Image.network(myinfo.skills.one),
               const SizedBox(height: 8),
-              Center(
-                child: Image.network(
-                  "https://skillicons.dev/icons?i=java,flask,html,css,js",
-                ),
-              ),
+              Center(child: Image.network(myinfo.skills.two)),
               const SizedBox(height: 20),
               CustomButton(
                 title: "Download Resume",
-                onTap: () {},
+                onTap: () {
+                  launchUrl(Uri.parse(myinfo.resume));
+                },
                 width: 200,
                 colors: const [Colors.blueGrey, Colors.deepPurpleAccent],
               )

@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:my_portfolio/features/home/ui/widgets/contactme/contact_card.dart';
+import 'package:my_portfolio/features/contact/data/me.dart';
+import 'package:my_portfolio/features/contact/ui/contactme/contact_card.dart';
 import 'package:my_portfolio/features/home/ui/widgets/title_card.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class ContactMe extends StatelessWidget {
-  const ContactMe({super.key});
+  const ContactMe({super.key, required this.myinfo});
+  final Me myinfo;
 
   @override
   Widget build(BuildContext context) {
@@ -22,12 +24,12 @@ class ContactMe extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 ContactCard(
-                  title: "ymahmoud1213@gmail.com",
+                  title: myinfo.email,
                   img: "assets/gmail.png",
                   onTap: () {
                     launchUrl(Uri(
                       scheme: "mailto",
-                      path: "ymahmoud1213@gmail.com",
+                      path: myinfo.email,
                       queryParameters: {
                         "subject": "Hello!",
                         "body": "I want to contact you.",
@@ -37,10 +39,10 @@ class ContactMe extends StatelessWidget {
                 ),
                 const SizedBox(height: 20),
                 ContactCard(
-                  title: "+201014502276",
+                  title: myinfo.phone,
                   img: "assets/whatsapp.png",
                   onTap: () {
-                    launchUrl(Uri.parse("https://wa.me/+201014502276"));
+                    launchUrl(Uri.parse("https://wa.me/${myinfo.phone}"));
                   },
                 ),
               ],
@@ -50,8 +52,7 @@ class ContactMe extends StatelessWidget {
                 InkWell(
                     onTap: () {
                       launchUrl(
-                        Uri.parse(
-                            'https://www.facebook.com/profile.php?id=100009483401222'),
+                        Uri.parse(myinfo.socialMedia.facebook),
                       );
                     },
                     child: const CircleAvatar(
@@ -62,8 +63,7 @@ class ContactMe extends StatelessWidget {
                 InkWell(
                   onTap: () {
                     launchUrl(
-                      Uri.parse(
-                          'https://www.linkedin.com/in/yousef-dewidar-0884772a3/'),
+                      Uri.parse(myinfo.socialMedia.linkedin),
                     );
                   },
                   child: const CircleAvatar(
@@ -75,7 +75,7 @@ class ContactMe extends StatelessWidget {
                 InkWell(
                   onTap: () {
                     launchUrl(
-                      Uri.parse('https://github.com/YousefDewidar'),
+                      Uri.parse(myinfo.socialMedia.github),
                     );
                   },
                   child: const CircleAvatar(
