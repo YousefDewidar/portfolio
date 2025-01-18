@@ -1,11 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:my_portfolio/core/helper/fast_navigate.dart';
 import 'package:my_portfolio/features/home/ui/widgets/buttin_hire.dart';
+import 'package:my_portfolio/features/projects/projects_view.dart';
 import 'package:widget_and_text_animator/widget_and_text_animator.dart';
 
 class HeroSection extends StatelessWidget {
-  const HeroSection({super.key, this.alginment = CrossAxisAlignment.start});
+  const HeroSection(
+      {super.key,
+      this.alginment = CrossAxisAlignment.start,
+      required this.scrollCon});
   final CrossAxisAlignment alginment;
+  final ScrollController scrollCon;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -61,12 +67,20 @@ class HeroSection extends StatelessWidget {
                 ? MainAxisAlignment.start
                 : MainAxisAlignment.center,
             children: [
-              const ButtonHire(
-                title: "Hire Me",
+              ButtonHire(
+                title: "Contact me",
+                onPressed: () {
+                  scrollCon.animateTo(1200,
+                      duration: const Duration(milliseconds: 300),
+                      curve: Curves.linear);
+                },
               ),
               SizedBox(width: 16.h),
-              const ButtonHire(
+              ButtonHire(
                 title: "View Works",
+                onPressed: () {
+                  fastNavigate(context, const ProjectsView());
+                },
               ),
             ],
           ),

@@ -10,8 +10,10 @@ import 'package:my_portfolio/features/home/ui/widgets/projects_list_view.dart';
 import 'package:my_portfolio/features/home/ui/widgets/title_card.dart';
 
 class HomeViewBody extends StatelessWidget {
-  const HomeViewBody({super.key, required this.myInfo});
+  const HomeViewBody(
+      {super.key, required this.myInfo, required this.scrollCon});
   final Me myInfo;
+  final ScrollController scrollCon;
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +28,9 @@ class HomeViewBody extends StatelessWidget {
                 children: [
                   SizedBox(height: 50.h),
                   Image.asset("assets/megamenu.png", height: 300),
-                  const HeroSection(alginment: CrossAxisAlignment.center),
+                  HeroSection(
+                      alginment: CrossAxisAlignment.center,
+                      scrollCon: scrollCon),
                   SizedBox(height: 25.h),
                   const TitleCard(
                       title: "Projects",
@@ -34,20 +38,23 @@ class HomeViewBody extends StatelessWidget {
                   const ProjectsListView()
                 ],
               ),
-              const Positioned(
+              Positioned(
                   top: 20,
                   left: 0,
                   right: 0,
-                  child: CustomAppBar(forMobile: true, activeNum: 0)),
+                  child: CustomAppBar(
+                      forMobile: true, activeNum: 0, scrollCon: scrollCon)),
             ],
           );
         } else {
           // Big Screen
           return ListView(
+            controller: scrollCon,
             padding: EdgeInsets.symmetric(horizontal: 100.w),
             children: [
               SizedBox(height: 20.h),
               CustomAppBar(
+                scrollCon: scrollCon,
                 forMobile: constraints.maxWidth < 800,
                 activeNum: 0,
               ),
@@ -55,7 +62,7 @@ class HomeViewBody extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                  const HeroSection(),
+                  HeroSection(scrollCon: scrollCon),
                   Flexible(
                     child: Image.asset("assets/megamenu.png", height: 500.h),
                   ),

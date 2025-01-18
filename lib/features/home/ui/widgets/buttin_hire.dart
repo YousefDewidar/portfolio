@@ -4,8 +4,10 @@ class ButtonHire extends StatefulWidget {
   const ButtonHire({
     super.key,
     required this.title,
+    required this.onPressed,
   });
   final String title;
+  final void Function() onPressed;
 
   @override
   State<ButtonHire> createState() => _ButtonHireState();
@@ -16,11 +18,11 @@ class _ButtonHireState extends State<ButtonHire> {
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
+      onPressed: widget.onPressed,
       onHover: (value) {
         _isHover = value;
         setState(() {});
       },
-      onPressed: () {},
       style: ButtonStyle(
         backgroundColor: WidgetStatePropertyAll(_isHover
             ? const Color.fromARGB(255, 75, 97, 108)

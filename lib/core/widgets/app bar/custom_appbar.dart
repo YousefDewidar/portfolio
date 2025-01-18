@@ -8,9 +8,11 @@ class CustomAppBar extends StatelessWidget {
     super.key,
     this.forMobile = false,
     required this.activeNum,
+    this.scrollCon,
   });
   final bool forMobile;
   final int activeNum;
+  final ScrollController? scrollCon;
   @override
   Widget build(BuildContext context) {
     return Align(
@@ -42,10 +44,12 @@ class CustomAppBar extends StatelessWidget {
               if (forMobile)
                 CustomAppbarForMobile(
                   activeNum: activeNum,
+                  scrollCon: scrollCon,
                 )
               else
                 LinksForWeb(
                   activeNum: activeNum,
+                  scrollCon: scrollCon,
                 ),
             ],
           ),

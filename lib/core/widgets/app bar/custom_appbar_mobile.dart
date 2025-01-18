@@ -5,8 +5,10 @@ import 'package:my_portfolio/features/home/ui/home_view.dart';
 import 'package:my_portfolio/features/projects/projects_view.dart';
 
 class CustomAppbarForMobile extends StatefulWidget {
-  const CustomAppbarForMobile({super.key, required this.activeNum});
+  const CustomAppbarForMobile(
+      {super.key, required this.activeNum, this.scrollCon});
   final int activeNum;
+  final ScrollController? scrollCon;
 
   @override
   State<CustomAppbarForMobile> createState() => _CustomAppbarForMobileState();
@@ -44,7 +46,11 @@ class _CustomAppbarForMobileState extends State<CustomAppbarForMobile> {
                 title: 'About',
                 active: widget.activeNum == 1,
                 onTap: () {
-                  // fastNavigate(context, const HomeView());
+                  if (widget.scrollCon != null) {
+                    widget.scrollCon!.animateTo(600,
+                        duration: const Duration(milliseconds: 300),
+                        curve: Curves.linear);
+                  }
                 },
               ),
               const SizedBox(height: 3),

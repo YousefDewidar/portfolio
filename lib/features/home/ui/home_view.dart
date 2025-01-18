@@ -11,6 +11,8 @@ class HomeView extends StatefulWidget {
 }
 
 class _HomeViewState extends State<HomeView> {
+  ScrollController scrollController = ScrollController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,7 +31,8 @@ class _HomeViewState extends State<HomeView> {
           future: SupabaseService.getMyinfo(),
           builder: (context, snapshot) {
             if (snapshot.hasData) {
-              return HomeViewBody(myInfo: snapshot.data!);
+              return HomeViewBody(
+                  myInfo: snapshot.data!, scrollCon: scrollController);
             } else {
               return const Center(child: CircularProgressIndicator());
             }

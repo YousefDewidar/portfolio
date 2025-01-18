@@ -8,7 +8,9 @@ class LinksForWeb extends StatelessWidget {
   const LinksForWeb({
     super.key,
     required this.activeNum,
+    this.scrollCon,
   });
+  final ScrollController? scrollCon;
 
   final int activeNum;
 
@@ -27,7 +29,11 @@ class LinksForWeb extends StatelessWidget {
           title: 'About',
           active: activeNum == 1,
           onTap: () {
-            // fastNavigate(context, const HomeView());
+            if (scrollCon != null) {
+              scrollCon!.animateTo(600,
+                  duration: const Duration(milliseconds: 300),
+                  curve: Curves.linear);
+            }
           },
         ),
         LinksCard(
