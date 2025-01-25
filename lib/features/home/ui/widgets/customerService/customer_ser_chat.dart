@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:my_portfolio/features/home/ui/widgets/customerService/chat_appbar.dart';
 import 'package:my_portfolio/features/home/ui/widgets/customerService/cus_page0.dart';
 import 'package:my_portfolio/features/home/ui/widgets/customerService/cus_page1.dart';
+import 'package:my_portfolio/features/home/ui/widgets/customerService/cus_page2.dart';
 
 class CustomerSerChat extends StatelessWidget {
   const CustomerSerChat({
@@ -25,7 +26,11 @@ class CustomerSerChat extends StatelessWidget {
               controller: controller,
               scrollDirection: Axis.horizontal,
               physics: const NeverScrollableScrollPhysics(),
-              children: [CusPage0(con: controller), CusPage1(con: controller)],
+              children: [
+                CusPage0(con: controller),
+                CusPage1(con: controller),
+                CusPage2(con: controller),
+              ],
             ),
           ),
         ],

@@ -13,34 +13,60 @@ class CusPage1 extends StatelessWidget {
   Widget build(BuildContext context) {
     List<ServiceCard> servicesList = const [
       ServiceCard(
+        isChat: true,
         title: "Contact Support",
-        content: "Get in touch with our support team for any inquiries.\n"
-            "Response time: within 24 hours.\n"
-            "Available via email, phone, and live chat.",
+        content: "Get in touch with me for any inquiries.\n"
+            "Available via live chat.",
       ),
       ServiceCard(
-        title: "Registration Issues",
-        content: "Having trouble signing up? We can help!\n"
-            "Check your email for the verification link.\n"
-            "Contact support if you didn’t receive it.",
+        title: "Contact Information",
+        content: """
+WhatsApp: 01014502276
+Email: ymahmoud1213@gmail.com
+Address: Tanta, Egypt""",
+      ),
+      ServiceCard(title: "Social Media Accounts", content: """
+GitHub: YousefDewidar
+LinkedIn: Yousef Dewidar
+Facebook: Yousef Dewidar"""),
+      ServiceCard(
+        title: "Education",
+        content: "Bachelor of Computer Engineering, Tanta University",
       ),
       ServiceCard(
-        title: "Technical Support",
-        content: "Facing technical issues? Let us know!\n"
-            "Report bugs or glitches directly through our support page.\n"
-            "Get troubleshooting guides for common problems.",
+        title: "Popular Apps",
+        content: """
+Al-Muslim
+Nestify
+Bookly
+Ai Assistant
+Franco Ai
+My Portfolio Website
+Easy Recharge""",
       ),
       ServiceCard(
-        title: "Account Recovery",
-        content: "Forgot your password or lost access?\n"
-            "Use the 'Forgot Password' option to reset it.\n"
-            "Contact support if you need further assistance.",
+        title: "Programming Languages",
+        content: """
+Dart
+Flutter
+Kotlin
+Python
+HTML
+CSS
+Js
+C++
+PHP
+SQL""",
       ),
       ServiceCard(
-        title: "FAQ & Help Center",
-        content: "Find answers to common questions.\n"
-            "Browse guides on how to use the platform.\n"
-            "Check our step-by-step tutorials for quick solutions.",
+        title: "Skills",
+        content: """
+Mobile App development
+payment gateway integration
+Firebase
+Supabase
+Notification services
+UI design""",
       ),
     ];
 
@@ -67,11 +93,12 @@ class CusPage1 extends StatelessWidget {
             ),
           ),
           CustomButton(
-              title: "Back To Home",
-              height: 30,
-              onTap: () {
-                con.jumpToPage(0);
-              }),
+            title: "Back To Home",
+            height: 30,
+            onTap: () {
+              con.jumpToPage(0);
+            },
+          ),
         ],
       ),
     );

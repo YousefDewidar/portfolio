@@ -37,7 +37,9 @@ class CusPage0 extends StatelessWidget {
                 ),
                 const SizedBox(height: 10),
                 ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    con.jumpToPage(2);
+                  },
                   child: const Text(
                     'العربية',
                     style: TextStyle(color: Colors.blueAccent),
