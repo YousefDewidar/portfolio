@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:my_portfolio/dummy_projects.dart';
+import 'package:my_portfolio/core/supabase/supabase.dart';
 import 'package:my_portfolio/core/widgets/app%20bar/custom_appbar.dart';
 import 'package:my_portfolio/features/home/ui/widgets/customerService/customer_services.dart';
 import 'package:my_portfolio/features/home/ui/widgets/project_card.dart';
@@ -35,17 +35,27 @@ class ProjectsView extends StatelessWidget {
                 title: "Projects",
                 desc: "",
               ),
-              GridView.builder(
-                shrinkWrap: true,
-                physics: const NeverScrollableScrollPhysics(),
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: constraints.maxWidth < 800 ? 2 : 3,
-                    childAspectRatio: 1),
-                itemCount: 9,
-                itemBuilder: (context, index) {
-                  return ProjectCard(project: getDummyProject()[index]);
-                },
-              )
+              FutureBuilder(
+                  future: SupabaseService.getAllProjects('projects'),
+                  builder: (context, snap) {
+                    if (snap.connectionState == ConnectionState.waiting) {
+                      return const Center(child: CircularProgressIndicator());
+                    } else if (snap.hasError) {
+                      return const Center(child: Text("Error"));
+                    } else {
+                      return GridView.builder(
+                        shrinkWrap: true,
+                        physics: const NeverScrollableScrollPhysics(),
+                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: constraints.maxWidth < 800 ? 2 : 3,
+                            childAspectRatio: 1),
+                        itemCount: 9,
+                        itemBuilder: (context, index) {
+                          return ProjectCard(project: snap.data![index]);
+                        },
+                      );
+                    }
+                  })
             ],
           );
         }),

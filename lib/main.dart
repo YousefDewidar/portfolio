@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:my_portfolio/core/supabase/supabase_key.dart';
 import 'package:my_portfolio/features/home/ui/home_view.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-
-  // await Supabase.initialize(
-  //   url: supabaseUrl,
-  //   anonKey: supabaseKey,
-  // );
+  await Supabase.initialize(
+    url: supabaseUrl,
+    anonKey: supabaseKey,
+  );
 
   runApp(const MyPortfolio());
 }

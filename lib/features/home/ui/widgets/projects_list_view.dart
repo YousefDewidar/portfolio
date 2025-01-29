@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:my_portfolio/core/supabase/supabase.dart';
 import 'package:my_portfolio/core/widgets/custom_button.dart';
-import 'package:my_portfolio/dummy_projects.dart';
 import 'package:my_portfolio/features/home/ui/widgets/project_card.dart';
 import 'package:my_portfolio/features/home/ui/widgets/title_card.dart';
 import 'package:my_portfolio/features/projects/projects_view.dart';
@@ -19,8 +19,8 @@ class ProjectsListView extends StatelessWidget {
           desc: "Check out my projects below 👇",
         ),
         FutureBuilder(
-          // future: SupabaseService.getTopProjects(),
-          future: getDummyProjectAsync(),
+          future: SupabaseService.getTopProjects(),
+          // future: getDummyProjectAsync(),
           builder: (context, snapshot) {
             if (snapshot.hasData) {
               return GridView.builder(
