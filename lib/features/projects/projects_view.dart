@@ -36,12 +36,13 @@ class ProjectsView extends StatelessWidget {
                 desc: "",
               ),
               FutureBuilder(
-                  future: SupabaseService.getAllProjects('projects'),
+                  future: SupabaseService.getAllProjects(),
+                  // future: getDummyProjectAsync(),
                   builder: (context, snap) {
                     if (snap.connectionState == ConnectionState.waiting) {
                       return const Center(child: CircularProgressIndicator());
                     } else if (snap.hasError) {
-                      return const Center(child: Text("Error"));
+                      return  Center(child: Text(snap.error.toString()));
                     } else {
                       return GridView.builder(
                         shrinkWrap: true,

@@ -20,12 +20,13 @@ class MyPortfolio extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const ScreenUtilInit(
+    return  const ScreenUtilInit(
       designSize: Size(1200, 870),
       child: MaterialApp(
         title: 'YMD',
         debugShowCheckedModeBanner: false,
         home: HomeView(),
+      
       ),
     );
   }

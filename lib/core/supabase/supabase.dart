@@ -5,8 +5,8 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 class SupabaseService {
   static final supabase = Supabase.instance.client;
 
-  static Future<List<Project>> getAllProjects(String table) async {
-    var dbData = await supabase.from(table).select();
+  static Future<List<Project>> getAllProjects() async {
+    var dbData = await supabase.from('projects').select();
     return dbData.map((item) => Project.fromJson(item)).toList();
   }
 

@@ -19,7 +19,7 @@ class ProjectsListView extends StatelessWidget {
           desc: "Check out my projects below 👇",
         ),
         FutureBuilder(
-          future: SupabaseService.getTopProjects(),
+          future: SupabaseService.getAllProjects(),
           // future: getDummyProjectAsync(),
           builder: (context, snapshot) {
             if (snapshot.hasData) {
