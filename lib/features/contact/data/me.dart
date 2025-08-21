@@ -1,4 +1,3 @@
-import 'package:my_portfolio/features/contact/data/skills.dart';
 import 'package:my_portfolio/features/contact/data/social_media.dart';
 
 class Me {
@@ -9,7 +8,6 @@ class Me {
   final String email;
   final String name;
   final String about;
-  final Skills skills;
 
   Me({
     required this.about,
@@ -19,19 +17,21 @@ class Me {
     required this.phone,
     required this.email,
     required this.name,
-    required this.skills,
   });
 
-  factory Me.fromJson(Map<String, dynamic> json) {
-    return Me(
-      id: json['id'],
-      resume: json['resume'],
-      socialMedia: SocialMedia.fromJson(json['social_media']),
-      phone: json['phone'],
-      email: json['email'],
-      name: json['name'],
-      about: json['about'],
-      skills: Skills.fromJson(json['skills']),
-    );
-  }
+  static Me getMyInfo() => Me(
+        about:
+            "I'm a Flutter Developer and UI/UX Designer with 1 year of experience.",
+        id: 1,
+        resume:
+            'https://drive.google.com/file/d/1LM5D9QjzQlbaRtfuWkLn-YuB9FS2CL2a/view?usp=drive_link',
+        socialMedia: SocialMedia(
+          facebook: "https://www.facebook.com/yousef.dewidar.793331",
+          github: "https://github.com/YousefDewidar",
+          linkedin: "https://www.linkedin.com/in/yousefdewidar/",
+        ),
+        phone: "01014502276",
+        email: "ymahmoud1213@gmail.com",
+        name: "Yousef Dewidar",
+      );
 }

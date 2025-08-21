@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:my_portfolio/core/supabase/supabase.dart';
 import 'package:my_portfolio/core/widgets/app%20bar/custom_appbar.dart';
+import 'package:my_portfolio/dummy_projects.dart';
 import 'package:my_portfolio/features/home/ui/widgets/customerService/customer_services.dart';
 import 'package:my_portfolio/features/home/ui/widgets/project_card.dart';
 import 'package:my_portfolio/features/home/ui/widgets/title_card.dart';
@@ -36,13 +36,12 @@ class ProjectsView extends StatelessWidget {
                 desc: "",
               ),
               FutureBuilder(
-                  future: SupabaseService.getAllProjects(),
-                  // future: getDummyProjectAsync(),
+                  future: getDummyProjectAsync(),
                   builder: (context, snap) {
                     if (snap.connectionState == ConnectionState.waiting) {
                       return const Center(child: CircularProgressIndicator());
                     } else if (snap.hasError) {
-                      return  Center(child: Text(snap.error.toString()));
+                      return Center(child: Text(snap.error.toString()));
                     } else {
                       return GridView.builder(
                         shrinkWrap: true,
@@ -50,7 +49,7 @@ class ProjectsView extends StatelessWidget {
                         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                             crossAxisCount: constraints.maxWidth < 800 ? 2 : 3,
                             childAspectRatio: 1),
-                        itemCount: 9,
+                        itemCount: snap.data?.length ?? 0,
                         itemBuilder: (context, index) {
                           return ProjectCard(project: snap.data![index]);
                         },

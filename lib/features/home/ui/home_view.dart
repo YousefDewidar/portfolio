@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:my_portfolio/core/supabase/supabase.dart';
+import 'package:my_portfolio/features/contact/data/me.dart';
 import 'package:my_portfolio/features/home/ui/widgets/customerService/customer_services.dart';
 import 'package:my_portfolio/features/home/ui/widgets/home_view_body.dart';
 
@@ -27,17 +27,8 @@ class _HomeViewState extends State<HomeView> {
             end: Alignment.bottomRight,
           ),
         ),
-        child: FutureBuilder(
-          future: SupabaseService.getMyinfo(),
-          builder: (context, snapshot) {
-            if (snapshot.hasData) {
-              return HomeViewBody(
-                  myInfo: snapshot.data!, scrollCon: scrollController);
-            } else {
-              return const Center(child: CircularProgressIndicator());
-            }
-          },
-        ),
+        child:
+            HomeViewBody(myInfo: Me.getMyInfo(), scrollCon: scrollController),
       ),
     );
   }

@@ -39,11 +39,15 @@ class HomeViewBody extends StatelessWidget {
                 ],
               ),
               Positioned(
-                  top: 20,
-                  left: 0,
-                  right: 0,
-                  child: CustomAppBar(
-                      forMobile: true, activeNum: 0, scrollCon: scrollCon)),
+                top: 20,
+                left: 0,
+                right: 0,
+                child: CustomAppBar(
+                  forMobile: true,
+                  activeNum: 0,
+                  scrollCon: scrollCon,
+                ),
+              ),
             ],
           );
         } else {

@@ -87,10 +87,14 @@ class AboutMe extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 20),
-              Image.network(myinfo.skills.one),
-              const SizedBox(height: 8),
-              // Center(child: Image.network(myinfo.skills.two)),
-              // Center(child: Image.network(myinfo.skills.two)),
+              Center(
+                  child:
+                      Image.network("https://skillicons.dev/icons?i=flutter")),
+              Center(
+                  child: Image.network("https://skillicons.dev/icons?i=dart")),
+              Center(
+                  child:
+                      Image.network("https://skillicons.dev/icons?i=python")),
               const SizedBox(height: 20),
               CustomButton(
                 title: "Download Resume",

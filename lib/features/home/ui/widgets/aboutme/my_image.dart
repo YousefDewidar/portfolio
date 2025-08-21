@@ -17,6 +17,7 @@ class MyImage extends StatelessWidget {
         clipBehavior: Clip.none,
         children: [
           Container(
+            width: MediaQuery.of(context).size.width * 0.3,
             decoration: const BoxDecoration(
               borderRadius: BorderRadius.all(Radius.circular(12)),
               gradient: LinearGradient(
